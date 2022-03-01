@@ -1,3 +1,4 @@
+import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:uuid/uuid.dart';
 
@@ -11,7 +12,8 @@ class GameSockets {
 
   void init() {
     var uuid = Uuid().v1();
-    channel = WebSocketChannel.connect(Uri.parse(serverUrl + "/" + uuid));
+    channel = IOWebSocketChannel.connect(serverUrl + "/" + uuid);
+    // channel = IOWebSocketChannel.connect(Uri.parse("wss://ws.ifelse.io/"));
   }
 
   void listen() {

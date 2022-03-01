@@ -12,10 +12,12 @@ void main() {
 
   final socket = GameSockets("ws://localhost:10000/ws");
   socket.init();
+  print("Hi frm main");
   socket.send("Hello");
   runApp(StreamBuilder(
     stream: socket.channel.stream,
     builder: (context, snapshot) {
+      print(snapshot);
       return GameWidget(
         game: TopDownGame(),
       );
